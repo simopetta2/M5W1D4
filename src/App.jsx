@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import viteLogo from '/vite.svg'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Mynav from './components/Mynav.jsx';
@@ -13,10 +11,10 @@ function App() {
 
   return (
     <>
-    <Mynav/>
-    <Welcome/>
-    <AllTheBooks/>
-    <MyFooter/>  
+      <Mynav />
+      <Welcome />
+      <AllTheBooks />
+      <MyFooter />
     </>
   )
 }

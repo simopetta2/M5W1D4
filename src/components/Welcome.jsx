@@ -22,9 +22,9 @@ function Welcome() {
                 </div>
             </Alert>
             {!show && <Button className='m-4' variant='outline-secondary' onClick={() => setShow(true)}>Apri Notifica</Button>}
-            <div class='d-flex align-items-center justify-content-between'>
-                <img class='icon-logo-img' src={image} alt="Logo" />
-                <img class='logo-img-epibooks' src={logo} alt="" />
+            <div className='d-flex align-items-center justify-content-between'>
+                <img className='icon-logo-img' src={image} alt="Logo" />
+                <img className='logo-img-epibooks' src={logo} alt="" />
             </div>
         </>
     );

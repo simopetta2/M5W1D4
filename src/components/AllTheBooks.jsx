@@ -4,25 +4,17 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import HorrorBook from '../books/horror.json'
+import Details from './Details.jsx'
+import SingleBook from './singleBook.jsx';
 function AllTheBooks() {
+    
     return (
+        
         <Container>
             <Row className='g-4'>
                 {HorrorBook.map((book) => {
                     return (
-                        <Col xs={12} md={4} lg={3}>
-                            <Card className='h-100'>
-                                <Card.Img variant="top" src={book.img} />
-                                <Card.Body className="d-flex flex-column">
-                                    <Card.Title className="text-tr">{book.title}</Card.Title>
-                                    <Card.Text className=''>
-                                        Categoria: {book.category} <br />
-                                        <strong>Price: {book.price}€</strong>
-                                    </Card.Text>
-                                    <Button variant="primary" className="mt-auto">Dettagli</Button>
-                                </Card.Body>
-                            </Card>
-                        </Col>
+                       <SingleBook key={book.asin} book={book}/>
                     )
                 })}
             </Row>
