@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import  HorrorBook  from '../books/horror.json'
+import books from '../books/horror.json'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,18 +7,15 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 
 
-function Mynav() {
-  const [filteredBooks, setFilteredBooks] = useState(HorrorBook)
-
-  const filterBooks = (event) => {
-    setFilteredBooks(HorrorBook.filter((books) =>
-      books.title.toLowerCase().includes(event.target.value.toLowerCase()))
-    )
-  }
+function Mynav({setFilteredBooks}) {
+const filterBooks = (event) =>{
+const bookArray = books.filter((book) => book.title.toLowerCase().includes(event.target.value.toLowerCase().trim()))
+setFilteredBooks(bookArray)
+}
   
 
   return (
-    <Navbar expand="lg">
+    <Navbar expand="lg" className="bg-white border-bottom shadow-sm py-3">
       <Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -38,8 +34,9 @@ function Mynav() {
         </Navbar.Collapse>
         <Col xs="auto">
           <Form.Control
+          
             type="text"
-            placeholder="Search"
+            placeholder="Search 🔍"
             className=" mr-sm-2"
           
             onChange={filterBooks}

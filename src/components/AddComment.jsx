@@ -1,7 +1,6 @@
-import { Row, Form, Col } from "react-bootstrap"
+import { Row, Form, Col, Button } from "react-bootstrap"
 import React, { useEffect, useState } from "react"
-
-function AddComment(asin) {
+function AddComment({asin, fetchComments}) {
     const [formData, setFormData] =useState({
         comment : '',
         rate:'',
@@ -19,8 +18,26 @@ useEffect (() =>{
     console.log(formData)
 },[formData])
 
+const handleSubmit = async (event) => {
+        event.preventDefault()
 
-const handleSubmit = () => {}
+        try {
+            const response = await fetch(
+                `https://striveschool-api.herokuapp.com/api/comments`,
+                {
+                    headers: {
+                        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTc5MWNlY2Y1Y2I1ZDAwMTU0ZjQzNTUiLCJpYXQiOjE3NzMwNzU5ODMsImV4cCI6MTc3NDI4NTU4M30.EN5xtmsfH8gQ7ws3H2Qz1j6bylelqcv3y7YqwdudXnY",
+                        'Content-Type': 'application/json'
+                    },
+                    method: 'POST',
+                    body: JSON.stringify(formData)
+                },
+            );
+            fetchComments();
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 
 
@@ -51,6 +68,7 @@ const handleSubmit = () => {}
                     />
 
                 </Form.Group>
+                         <Button onClick={handleSubmit}  type="submit" size="sm" className="mt-4">Submit form</Button>
             </Row>
         </Form>
     )
